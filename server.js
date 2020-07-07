@@ -53,6 +53,10 @@ app.get('/' , (req, res) => {
     res.render('new.ejs');
 });
 
+app.post("/crashreports", (req, res) => {
+    res.send(req.body);
+})
+
 //___________________
 //Listener
 //___________________
