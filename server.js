@@ -6,6 +6,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+
 //___________________
 //Port
 //___________________
@@ -49,7 +50,7 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-    res.send('Hello World!');
+    res.render('new.ejs');
 });
 
 //___________________

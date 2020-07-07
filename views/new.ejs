@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minor Crash Reporter</title>
+</head>
+<body>
+    <header>
+        <h1>Report a Minor Crash</h1>
+        <p>Note: This app was built for a school project and is not associated with the City of Philadelphia, Philadelphia Police, or any legal firm. This is not an official place to report a crash. If you have been involved in a crash, please find medical help and sound legal counsel. Any report made to this app is used for demonstration purposes and may be destroyed in the process of development.</p>
+    </header>
+    <main>
+        <form action="/crashreports/new" method="POST">
+            <fieldset>
+                <legend>Basics</legend>
+                <label for="date">Date of Crash</label>
+                <input type="date" name="date" id="date" required="true">
+                <label for="location">Location of Crash</label>
+                <input type="text" name="location" id="location" placeholder="Address or intersection" required="true">
+            </fieldset>
+            <!-- Radio Buttons for Location Type -->
+            <fieldset>
+                <legend>Where did the crash happen?</legend>
+                <input type="radio" name="loctype" id="intersection" value="intersection" required="true"><label for="loctype">Intersection</label>
+                <input type="radio" name="loctype" id="midblock" value="midblock" required="true"><label for="loctype">Midblock</label>
+                <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true"><label for="loctype">Sidewalk</label>
+                <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true"><label for="loctype">Parking Lot</label>
+                <input type="radio" name="loctype" id="other" value="other" required="true"><label for="loctype">Other</label>
+            </fieldset>
+            <!-- Checkboxes for vehicle types -->
+            <fieldset>
+                <legend>What travel modes were involved?</legend>
+                <input type="checkbox" name="car" id="car" value="car"><label for="car">Car (includes motorcycles, trucks)</label>
+                <input type="checkbox" name="bike" id="bike" value="bike"><label for="bike">Bicycle</label>
+                <input type="checkbox" name="ped" id="ped" value="ped"><label for="ped">Pedestrian</label>
+            </fieldset>
+            <fieldset>
+                <legend>Was anyone injured?</legend>
+                <input type="radio" name="injury" id="none" value="intersection" required="true"><label for="none">None</label>
+                <input type="radio" name="injury" id="minor" value="minor" required="true"><label for="minor">Minor</label>
+                <input type="radio" name="injury" id="major" value="major" required="true"><label for="major">Major</label>
+                <input type="radio" name="injury" id="death" value="death" required="true"><label for="death">Death</label>
+            </fieldset>
+        </form>
+    </main>
+</body>
+</html>
