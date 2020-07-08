@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+ 'crashreports';
 
 // Connect to Mongo
-mongoose.connect(MONGODB_URI ,  { useNewUrlParser: true});
+mongoose.connect(MONGODB_URI,  {useNewUrlParser: true});
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
@@ -36,14 +36,11 @@ db.on('open' , ()=>{});
 
 //use public folder for static assets
 app.use(express.static('public'));
-
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
 app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
-
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
-
 
 //___________________
 // Routes
@@ -54,6 +51,18 @@ app.get('/' , (req, res) => {
 });
 
 app.post("/crashreports", (req, res) => {
+    // Convert location to specific coordinates
+    // Convert hitAndRun to true
+    // If description is empty, convert to "not given"
+    // If car, bike, or ped == "on": push into mode array
+    let mode = [];
+    // Convert called911 to true
+    // Convert madeReport to true
+    // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
+    // Convert haveLawyer to true
+    // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
+    // Convert madeSuit to true
+
     res.send(req.body);
 })
 
