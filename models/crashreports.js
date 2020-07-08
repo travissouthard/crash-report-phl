@@ -4,18 +4,18 @@ const Schema = mongoose.Schema;
 const reportSchema = new Schema({
     date: {type: Date, required: true},
     location: {type: Array, required: true},
-    hitAndRun: Boolean,
+    hitAndRun: {type: Boolean, default: false},
     description: String,
     loctype: String,
     mode: Array, //Car, bike, and/or ped
     injury: String,
-    called911: Boolean,
+    called911: {type: Boolean, default: false},
     policeResponse: String,
-    madeReport: Boolean,
+    madeReport: {type: Boolean, default: false},
     reportNumber: String,
-    haveLawyer: Boolean,
+    haveLawyer: {type: Boolean, default: false},
     lawyerName: String,
-    madeSuit: Boolean
+    madeSuit: {type: Boolean, default: false}
 }, {timestamps: true});
 
 const Report = mongoose.model("Report", reportSchema);

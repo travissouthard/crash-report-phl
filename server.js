@@ -52,17 +52,33 @@ app.get('/' , (req, res) => {
 
 app.post("/crashreports", (req, res) => {
     // Convert location to specific coordinates
+        // Need API for this
+    
+    //Converts any checkbox into a boolean
+    const convertBoolean = (property) => {
+        if (property == "on") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+
     // Convert hitAndRun to true
+    req.body.hitAndRun = convertBoolean(req.body.hitAndRun);
     // If description is empty, convert to "not given"
     // If car, bike, or ped == "on": push into mode array
     let mode = [];
+        // Delete req.body.car, req.body.bike, & req.body.ped
     // Convert called911 to true
+    req.body.called911 = convertBoolean(req.body.called911);
     // Convert madeReport to true
+    req.body.madeReport = convertBoolean(req.body.madeReport);
     // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
     // Convert haveLawyer to true
+    req.body.haveLawyer = convertBoolean(req.body.haveLawyer);
     // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
     // Convert madeSuit to true
-
+    req.body.madeSuit = convertBoolean(req.body.madeSuit);
     res.send(req.body);
 })
 
