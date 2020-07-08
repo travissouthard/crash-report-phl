@@ -7,7 +7,9 @@ const Reports = require("../models/crashreports.js")
 //Index
 router.get("/", (req, res) => {
     Reports.find({}, (err, allReports) => {
-        res.send(allReports);
+        res.render("index.ejs", {
+            reports: allReports,
+        });
     });
 });
 

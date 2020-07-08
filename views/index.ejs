@@ -1,0 +1,13 @@
+    <%- include("./partials/head.ejs") %>
+    <body>
+        <%- include("./partials/header.ejs") %>
+        <main>
+            <h3>Crash Reports</h3>
+            <ul>
+                <% for (let i = 0; i < reports.length; i++) { %>
+                    <li><%= reports[i].date.toDateString() %> | <%= reports[i].location %></li>
+                <% } %>
+            </ul>
+        </main>
+    </body>
+</html>
