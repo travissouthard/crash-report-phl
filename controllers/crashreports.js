@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const crashreports = require("../models/crashreports.js")
+const Reports = require("../models/crashreports.js")
 
 // Routes
+
+//Index
+router.get("/", (req, res) => {
+    Reports.find({}, (err, allReports) => {
+        res.send(allReports);
+    });
+});
 
 //New
 router.get("/new" , (req, res) => {
@@ -68,7 +75,9 @@ router.post("/", (req, res) => {
         req.body.lawyerName = "No lawyer";
     };
 
-    res.send(req.body);
+    Reports.create(req.body, () => {
+        res.redirect("/crashreports");
+    });
 });
 
 module.exports = router;
