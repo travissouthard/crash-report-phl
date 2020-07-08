@@ -4,7 +4,7 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
-const app = express ();
+const app = express();
 const db = mongoose.connection;
 
 //___________________
@@ -45,11 +45,12 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //___________________
 // Routes
 //___________________
-//localhost:3000
+//Landing page
 app.get('/' , (req, res) => {
     res.render('new.ejs');
 });
 
+//Create
 app.post("/crashreports", (req, res) => {
     // Convert location to specific coordinates
         // Need API for this
