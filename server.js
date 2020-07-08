@@ -62,41 +62,52 @@ app.post("/crashreports", (req, res) => {
             return false;
         };
     };
-
     // Convert hitAndRun to true
     req.body.hitAndRun = convertBoolean(req.body.hitAndRun);
-    // If description is empty, convert to "not given"
+    // Convert called911 to true
+    req.body.called911 = convertBoolean(req.body.called911);
+    // Convert madeReport to true
+    req.body.madeReport = convertBoolean(req.body.madeReport);
+    // Convert haveLawyer to true
+    req.body.haveLawyer = convertBoolean(req.body.haveLawyer);
+    // Convert madeSuit to true
+    req.body.madeSuit = convertBoolean(req.body.madeSuit);
+
+    // If description is empty, convert to "Undisclosed"
+    if (req.body.description == "") {
+        req.body.description = "Undisclosed"
+    }
+
     // If car, bike, or ped == "on": push into mode array
     let mode = [];
-    const addMode = (option) => {
+    const addMode = (option, string) => {
         if (option == "on") {
-            mode.push(option);
+            mode.push(string);
         };
     };
-    addMode(req.body.car);
-    addMode(req.body.bike);
-    addMode(req.body.ped);
+    addMode(req.body.car, "car");
+    addMode(req.body.bike, "bike");
+    addMode(req.body.ped, "ped");
     req.body.mode = mode;
     // Delete req.body.car, req.body.bike, & req.body.ped
     delete req.body.car;
     delete req.body.bike;
     delete req.body.ped;
 
-    // Convert called911 to true
-    req.body.called911 = convertBoolean(req.body.called911);
-
-    // Convert madeReport to true
-    req.body.madeReport = convertBoolean(req.body.madeReport);
-
     // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
-
-    // Convert haveLawyer to true
-    req.body.haveLawyer = convertBoolean(req.body.haveLawyer);
+    if (req.body.madeReport == true && req.body.reportNumber == "") {
+        req.body.reportNumber = "Undisclosed";
+    } else if (req.body.madeReport == false) {
+        req.body.reportNumber = "No report";
+    };
 
     // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
+    if (req.body.haveLawyer == true && req.body.lawyerName == "") {
+        req.body.lawyerName = "Undisclosed";
+    } else if (req.body.haveLawyer == false) {
+        req.body.lawyerName = "No lawyer";
+    };
 
-    // Convert madeSuit to true
-    req.body.madeSuit = convertBoolean(req.body.madeSuit);
     res.send(req.body);
 })
 
