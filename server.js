@@ -68,15 +68,33 @@ app.post("/crashreports", (req, res) => {
     // If description is empty, convert to "not given"
     // If car, bike, or ped == "on": push into mode array
     let mode = [];
-        // Delete req.body.car, req.body.bike, & req.body.ped
+    const addMode = (option) => {
+        if (option == "on") {
+            mode.push(option);
+        };
+    };
+    addMode(req.body.car);
+    addMode(req.body.bike);
+    addMode(req.body.ped);
+    req.body.mode = mode;
+    // Delete req.body.car, req.body.bike, & req.body.ped
+    delete req.body.car;
+    delete req.body.bike;
+    delete req.body.ped;
+
     // Convert called911 to true
     req.body.called911 = convertBoolean(req.body.called911);
+
     // Convert madeReport to true
     req.body.madeReport = convertBoolean(req.body.madeReport);
+
     // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
+
     // Convert haveLawyer to true
     req.body.haveLawyer = convertBoolean(req.body.haveLawyer);
+
     // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
+
     // Convert madeSuit to true
     req.body.madeSuit = convertBoolean(req.body.madeSuit);
     res.send(req.body);
