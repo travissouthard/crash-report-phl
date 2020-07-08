@@ -6,7 +6,7 @@
             <h3>Crash Reports</h3>
             <ul>
                 <% for (let i = 0; i < reports.length; i++) { %>
-                    <li><%= reports[i].date.toDateString() %> | <%= reports[i].location %></li>
+                    <li><a href="/crashreports/<%= reports[i].id %>"><%= reports[i].date.toDateString() %></a> | <%= reports[i].location %></li>
                 <% } %>
             </ul>
         </main>

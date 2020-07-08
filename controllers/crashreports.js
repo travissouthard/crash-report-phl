@@ -82,4 +82,13 @@ router.post("/", (req, res) => {
     });
 });
 
+//Show
+router.get("/:id", (req, res) => {
+    Reports.findById(req.params.id, (err, report) => {
+        res.render("show.ejs", {
+            report: report,
+        });
+    });
+});
+
 module.exports = router;

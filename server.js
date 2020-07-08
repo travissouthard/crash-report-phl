@@ -45,6 +45,15 @@ app.use(methodOverride("_method"));// allow POST, PUT and DELETE from a form
 app.use("/crashreports/", reportsController);
 
 //___________________
+//Routes
+//___________________
+
+//For now, redirects to crashreports index
+app.get("/", (req, res) => {
+    res.redirect("/crashreports");
+})
+
+//___________________
 //Listener
 //___________________
 app.listen(PORT, () => console.log("Listening on port:", PORT));
