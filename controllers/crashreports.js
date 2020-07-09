@@ -5,9 +5,6 @@ const e = require("express");
 
 // Callback for converting form data to useable data
 const convertData = (data) => {
-    //Converts date to value
-    // data.date = data.date.value;
-    
     //Converts any checkbox into a boolean
     const convertBoolean = (property) => {
         if (property == "on") {
