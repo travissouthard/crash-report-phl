@@ -1,0 +1,86 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+a {
+    text-decoration: none;
+    color: lightgrey;
+    margin: 1px;
+    padding: 2px;
+    border-radius: 3px;
+}
+
+a:hover {
+    margin: 0;
+    color: white;
+    border: 1px solid white;
+}
+
+header p {
+    text-align: justify;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav a {
+    border: 1px solid lightgrey;
+    margin: 0;
+}
+
+form {
+    border: 1px solid white;
+    padding: 5px;
+}
+
+textarea {
+    width: 100%;
+    margin: 3px 0;
+}
+
+input, label {
+    margin: 3px 1px;
+}
+
+button, input[type="submit"] {
+    display: inline;
+    font-size: 1em;
+    border: 2px solid grey;
+    padding: 3px 5px;
+    margin: 5px 10px;
+    border-radius: 3px;
+    background-color: grey;
+    color: white;
+}
+
+button:hover, input[type="submit"]:hover {
+    color: gray;
+    background-color: white;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttons a {
+    margin: 0;
+    padding: 0;
+}
+
+.buttons a:hover {
+    border: 0;
+}

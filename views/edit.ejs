@@ -164,9 +164,11 @@
                 >
                 <label for="madeSuit">Have you made a lawsuit?</label>
             </fieldset>
-            <input type="submit" value="Edit report">
+            <div class="buttons">
+                <input type="submit" value="Edit report">
+                <a href="/crashreports/<%= report.id %>"><button>Cancel</button></a>
+            </div>
         </form>
-        <a href="/crashreports/<%= report.id %>"><button>Cancel</button></a>
     </main>
 </body>
 </html>

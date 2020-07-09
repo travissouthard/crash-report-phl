@@ -11,7 +11,7 @@
                     <label for="location">Location of Crash</label>
                     <input type="text" name="location" id="location" placeholder="Address or intersection" required="true">
                     <input type="checkbox" name="hitAndRun" id="hitAndRun"><label for="hitAndRun">Was this a hit & run?</label>
-                    <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"></textarea>
+                    <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10" placeholder="Please consider the following: Who was involved? Did anyone help?"></textarea>
                 </fieldset>
                 <!-- Radio Buttons for Location Type -->
                 <fieldset>
@@ -57,9 +57,11 @@
                     <input type="text" name="lawyerName" id="lawyerName" placeholder="Lawyer, Lawyer, & Lawyer">
                     <input type="checkbox" name="madeSuit" id="madeSuit"><label for="madeSuit">Have you made a lawsuit?</label>
                 </fieldset>
-                <input type="submit" value="Submit Report">
+                <div class="buttons">
+                    <input type="submit" value="Submit Report">
+                    <a href="/crashreports/"><button>Cancel</button></a>
+                </div>
             </form>
-            <a href="/crashreports/"><button>Cancel</button></a>
         </main>
     </body>
 </html>
