@@ -18,14 +18,39 @@
                 <label for="hitAndRun">Was this a hit & run?</label>
                 <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"><%= report.description %></textarea>
             </fieldset>
-            <!-- Radio Buttons for Location Type -->
+            <!-- Radio buttons for location -->
             <fieldset>
                 <legend>Where did the crash happen?</legend>
-                <input type="radio" name="loctype" id="intersection" value="intersection" required="true"><label for="intersection">Intersection</label>
-                <input type="radio" name="loctype" id="midblock" value="midblock" required="true"><label for="midblock">Midblock</label>
-                <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true"><label for="sidewalk">Sidewalk</label>
-                <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true"><label for="parkinglot">Parking Lot</label>
-                <input type="radio" name="loctype" id="other" value="other" required="true"><label for="other">Other</label>
+                <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
+                <% if (report.loctype == "intersection") { %>
+                    checked
+                <% } %>
+                >
+                <label for="intersection">Intersection</label>
+                <input type="radio" name="loctype" id="midblock" value="midblock" required="true"
+                <% if (report.loctype == "midblock") { %>
+                    checked
+                <% } %>
+                >
+                <label for="midblock">Midblock</label>
+                <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true"
+                <% if (report.loctype == "sidewalk") { %>
+                    checked
+                <% } %>
+                >
+                <label for="sidewalk">Sidewalk</label>
+                <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true"
+                <% if (report.loctype == "parkinglot") { %>
+                    checked
+                <% } %>
+                >
+                <label for="parkinglot">Parking Lot</label>
+                <input type="radio" name="loctype" id="other" value="other" required="true"
+                <% if (report.loctype == "other") { %>
+                    checked
+                <% } %>
+                >
+                <label for="other">Other</label>
             </fieldset>
             <!-- Checkboxes for vehicle types -->
             <!-- Callback for .some() array method below -->
