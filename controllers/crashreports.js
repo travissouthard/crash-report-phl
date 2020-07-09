@@ -2,7 +2,68 @@ const express = require("express");
 const router = express.Router();
 const Reports = require("../models/crashreports.js")
 
-// Routes
+// Callback for converting form data to useable data
+const convertData = (data) => {
+    //Converts any checkbox into a boolean
+    const convertBoolean = (property) => {
+        if (property == "on") {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    // Convert hitAndRun to true
+    data.hitAndRun = convertBoolean(data.hitAndRun);
+    // Convert called911 to true
+    data.called911 = convertBoolean(data.called911);
+    // Convert madeReport to true
+    data.madeReport = convertBoolean(data.madeReport);
+    // Convert haveLawyer to true
+    data.haveLawyer = convertBoolean(data.haveLawyer);
+    // Convert madeSuit to true
+    data.madeSuit = convertBoolean(data.madeSuit);
+
+    // If description is empty, convert to "Undisclosed"
+    if (data.description == "") {
+        data.description = "Undisclosed"
+    }
+
+    // If car, bike, or ped == "on": push into travel mode array
+    let mode = [];
+    const addMode = (option, string) => {
+        if (option == "on") {
+            mode.push(string);
+        };
+    };
+    addMode(data.car, "car");
+    addMode(data.bike, "bike");
+    addMode(data.ped, "ped");
+    data.mode = mode;
+    // Delete req.body.car, req.body.bike, & req.body.ped
+    delete data.car;
+    delete data.bike;
+    delete data.ped;
+
+    // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
+    if (data.madeReport == true && data.reportNumber == "") {
+        data.reportNumber = "Undisclosed";
+    } else if (data.madeReport == false) {
+        data.reportNumber = "No report";
+    };
+
+    // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
+    if (data.haveLawyer == true && data.lawyerName == "") {
+        data.lawyerName = "Undisclosed";
+    } else if (data.haveLawyer == false) {
+        data.lawyerName = "No lawyer";
+    };
+
+    return data;
+}
+
+//=============
+//   Routes
+//=============
 
 //Index
 router.get("/", (req, res) => {
@@ -23,59 +84,8 @@ router.post("/", (req, res) => {
     // Convert location to specific coordinates
         // Need API for this
     
-    //Converts any checkbox into a boolean
-    const convertBoolean = (property) => {
-        if (property == "on") {
-            return true;
-        } else {
-            return false;
-        };
-    };
-    // Convert hitAndRun to true
-    req.body.hitAndRun = convertBoolean(req.body.hitAndRun);
-    // Convert called911 to true
-    req.body.called911 = convertBoolean(req.body.called911);
-    // Convert madeReport to true
-    req.body.madeReport = convertBoolean(req.body.madeReport);
-    // Convert haveLawyer to true
-    req.body.haveLawyer = convertBoolean(req.body.haveLawyer);
-    // Convert madeSuit to true
-    req.body.madeSuit = convertBoolean(req.body.madeSuit);
-
-    // If description is empty, convert to "Undisclosed"
-    if (req.body.description == "") {
-        req.body.description = "Undisclosed"
-    }
-
-    // If car, bike, or ped == "on": push into travel mode array
-    let mode = [];
-    const addMode = (option, string) => {
-        if (option == "on") {
-            mode.push(string);
-        };
-    };
-    addMode(req.body.car, "car");
-    addMode(req.body.bike, "bike");
-    addMode(req.body.ped, "ped");
-    req.body.mode = mode;
-    // Delete req.body.car, req.body.bike, & req.body.ped
-    delete req.body.car;
-    delete req.body.bike;
-    delete req.body.ped;
-
-    // If madereport == true and reportNumber is empty: reportNumber is "unavailable". If madeReport == false: report number = "doesn't exist"
-    if (req.body.madeReport == true && req.body.reportNumber == "") {
-        req.body.reportNumber = "Undisclosed";
-    } else if (req.body.madeReport == false) {
-        req.body.reportNumber = "No report";
-    };
-
-    // If haveLawyer == true and lawyerName is empty: lawyername is "undisclosed". If haveLawyer == false: lawyerName is "No lawyer"
-    if (req.body.haveLawyer == true && req.body.lawyerName == "") {
-        req.body.lawyerName = "Undisclosed";
-    } else if (req.body.haveLawyer == false) {
-        req.body.lawyerName = "No lawyer";
-    };
+    //Convert data with callback
+    req.body = convertData(req.body);
 
     Reports.create(req.body, () => {
         res.redirect("/crashreports");
@@ -91,11 +101,22 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//Edit
 router.get("/:id/edit", (req, res) => {
     Reports.findById(req.params.id, (err, report) => {
         res.render("edit.ejs", {
             report: report,
         });
+    });
+});
+
+//Update
+router.put("/id", (req, res) => {
+    //Convert data with callback
+    req.body = convertData(req.body);
+
+    Reports.findByIdAndUpdate(req.params.id, {$set: req.body}, (err, report) => {
+        res.render("show.ejs" + req.params.id);
     });
 });
 

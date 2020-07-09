@@ -3,7 +3,7 @@
     <%- include("./partials/header.ejs") %>
     <%- include("./partials/nav.ejs") %>
     <main>
-        <form action="/crashreports/" method="POST">
+        <form action="/crashreports/<%= report.id %>?_method=PUT" method="POST">
             <fieldset>
                 <legend>Basics</legend>
                 <label for="date">Date of Crash</label>
