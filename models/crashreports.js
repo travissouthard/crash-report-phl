@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const reportSchema = new Schema({
-    date: {type: Date, required: true},
+    date: {type: String, required: true},
     location: {type: Array, required: true},
     hitAndRun: {type: Boolean, default: false},
     description: String,
