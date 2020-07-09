@@ -54,23 +54,22 @@
             </fieldset>
             <!-- Checkboxes for vehicle types -->
             <!-- Callback for .some() array method below -->
-            <% const checkMode = (mode, string) => mode == string; %>
             <fieldset>
                 <legend>What travel modes were involved?</legend>
                 <input type="checkbox" name="car" id="car"
-                <% if (report.mode.some(checkMode, "car")) { %>
+                <% if (report.mode.some((mode) => mode == "car")) { %>
                     checked
                 <% } %>
                 >
                 <label for="car">Car (includes motorcycles, trucks)</label>
                 <input type="checkbox" name="bike" id="bike"
-                <% if (report.mode.some(checkMode, "bike")) { %>
+                <% if (report.mode.some((mode) => mode == "bike")) { %>
                     checked
                 <% } %>
                 >
                 <label for="bike">Bicycle</label>
                 <input type="checkbox" name="ped" id="ped"
-                <% if (report.mode.some(checkMode, "ped")) { %>
+                <% if (report.mode.some((mode) => mode == "ped")) { %>
                     checked
                 <% } %>
                 >
