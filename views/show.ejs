@@ -4,6 +4,12 @@
     <%- include("./partials/nav.ejs") %>
     <main>
         <h3>Crash Report in Detail</h3>
+        <div class="control-panel">
+            <a href="/crashreports/<%= report.id %>/edit"><button>Edit Report</button></a>
+            <form action="/crashreports/<%= report.id %>?_method=DELETE" method="POST" id="delete-btn">
+                <input type="submit" value="Delete report">
+            </form>
+        </div>
         <div class="report">
             <p><strong>Date:</strong> <%= report.date %></p>
             <p><strong>location:</strong> <%= report.location %></p>

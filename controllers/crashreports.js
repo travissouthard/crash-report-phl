@@ -91,4 +91,19 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.get("/:id/edit", (req, res) => {
+    Reports.findById(req.params.id, (err, report) => {
+        res.render("edit.ejs", {
+            report: report,
+        });
+    });
+});
+
+//Delete
+router.delete("/:id", (req, res) => {
+    Reports.findByIdAndRemove(req.params.id, (err, report) => {
+        res.redirect("/crashreports")
+    });
+});
+
 module.exports = router;
