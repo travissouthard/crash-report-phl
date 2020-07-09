@@ -4,11 +4,28 @@
     <%- include("./partials/nav.ejs") %>
     <main>
         <h3>Crash Report in Detail</h3>
-        <ul>
-            <% for (let property in report) { %>
-                <li><%= property %>: <%= report[property] %></li>
+        <div class="report">
+            <p><strong>Date:</strong> <%= report.date %></p>
+            <p><strong>location:</strong> <%= report.location %></p>
+            <p><strong>description:</strong> <%= report.description %></p>
+            <p><strong>loctype:</strong> <%= report.loctype %></p>
+            <p><strong>hitAndRun:</strong> <%= report.hitAndRun %></p>
+            <p><strong>Modes involved:</strong> <%= report.mode %></p>
+            <p><strong>injury:</strong> <%= report.injury %></p>
+            <p><strong>called911:</strong> <%= report.called911 %></p>
+            <% if (report.called911) { %>
+                <p><strong>policeResponse:</strong> <%= report.policeResponse %></p>
             <% } %>
-        </ul>
+            <p><strong>madeReport:</strong> <%= report.madeReport %></p>
+            <% if (report.madeReport) { %>
+                <p><strong>reportNumber:</strong> <%= report.reportNumber %></p>
+            <% } %>
+            <p><strong>haveLawyer:</strong> <%= report.haveLawyer %></p>
+            <% if (report.haveLawyer) { %>
+                <p><strong>lawyerName:</strong> <%= report.lawyerName %></p>
+            <% } %>
+            <p><strong>madeSuit:</strong> <%= report.madeSuit %></p>
+        </div>
     </main>
 </body>
 </html>
