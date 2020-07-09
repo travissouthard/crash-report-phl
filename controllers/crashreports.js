@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Reports = require("../models/crashreports.js")
+const Reports = require("../models/crashreports.js");
+const e = require("express");
 
 // Callback for converting form data to useable data
 const convertData = (data) => {
@@ -111,12 +112,16 @@ router.get("/:id/edit", (req, res) => {
 });
 
 //Update
-router.put("/id", (req, res) => {
+router.put("/:id", (req, res) => {
     //Convert data with callback
     req.body = convertData(req.body);
 
-    Reports.findByIdAndUpdate(req.params.id, {$set: req.body}, (err, report) => {
-        res.render("show.ejs" + req.params.id);
+    Reports.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newReport) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/crashreports/" + req.params.id);
+        };
     });
 });
 
