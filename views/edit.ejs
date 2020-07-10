@@ -12,9 +12,9 @@
                 <input type="text" name="location" id="location" placeholder="Address or intersection" required="true" value="<%= report.location %>">
                 <div class="form-label">
                     <input type="checkbox" name="hitAndRun"
-                    <% if (report.hitAndRun) { %>
-                        checked
-                    <% } %>
+                        <% if (report.hitAndRun) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="hitAndRun">Was this a hit & run?</label>
                 </div>
@@ -25,41 +25,41 @@
                 <legend>Where did the crash happen?</legend>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
-                    <% if (report.loctype == "intersection") { %>
-                        checked
-                    <% } %>
+                        <% if (report.loctype == "intersection") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="intersection">Intersection</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="midblock" value="midblock" required="true"
-                    <% if (report.loctype == "midblock") { %>
-                        checked
-                    <% } %>
+                        <% if (report.loctype == "midblock") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="midblock">Midblock</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true"
-                    <% if (report.loctype == "sidewalk") { %>
-                        checked
-                    <% } %>
+                        <% if (report.loctype == "sidewalk") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="sidewalk">Sidewalk</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true"
-                    <% if (report.loctype == "parkinglot") { %>
-                        checked
-                    <% } %>
+                        <% if (report.loctype == "parkinglot") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="parkinglot">Parking Lot</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="other" value="other" required="true"
-                    <% if (report.loctype == "other") { %>
-                        checked
-                    <% } %>
+                        <% if (report.loctype == "other") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="other">Other</label>
                 </div>
@@ -70,25 +70,25 @@
                 <legend>What travel modes were involved?</legend>
                 <div class="form-label">
                     <input type="checkbox" name="car" id="car"
-                    <% if (report.mode.some((mode) => mode == "car")) { %>
-                        checked
-                    <% } %>
+                        <% if (report.mode.some((mode) => mode == "car")) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="car">Car (includes motorcycles, trucks)</label>
                 </div>
                 <div class="form-label">
                     <input type="checkbox" name="bike" id="bike"
-                    <% if (report.mode.some((mode) => mode == "bike")) { %>
-                        checked
-                    <% } %>
+                        <% if (report.mode.some((mode) => mode == "bike")) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="bike">Bicycle</label>
                 </div>
                 <div class="form-label">
                     <input type="checkbox" name="ped" id="ped"
-                    <% if (report.mode.some((mode) => mode == "ped")) { %>
-                        checked
-                    <% } %>
+                        <% if (report.mode.some((mode) => mode == "ped")) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="ped">Pedestrian</label>
                 </div>
@@ -98,33 +98,33 @@
                 <legend>Was anyone injured?</legend>
                 <div class="form-label">
                     <input type="radio" name="injury" id="none" value="none" required="true"
-                    <% if (report.injury == "none") { %>
-                        checked
-                    <% } %>
+                        <% if (report.injury == "none") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="none">None</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="injury" id="minor" value="minor" required="true"
-                    <% if (report.injury == "minor") { %>
-                        checked
-                    <% } %>
+                        <% if (report.injury == "minor") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="minor">Minor</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="injury" id="major" value="major" required="true"
-                    <% if (report.injury == "major") { %>
-                        checked
-                    <% } %>
+                        <% if (report.injury == "major") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="major">Major</label>
                 </div>
                 <div class="form-label">
                     <input type="radio" name="injury" id="death" value="death" required="true"
-                    <% if (report.injury == "none") { %>
-                        checked
-                    <% } %>
+                        <% if (report.injury == "none") { %>
+                            checked
+                        <% } %>
                     >
                     <label for="death">Death</label>
                 </div>
@@ -133,9 +133,9 @@
                 <legend>911/Police Response</legend>
                 <div class="form-label">
                     <input type="checkbox" name="called911" id="called911"
-                    <% if (report.called911) { %>
-                        checked
-                    <% } %>
+                        <% if (report.called911) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="called911">Did anyone call 911?</label>
                 </div>
@@ -144,42 +144,42 @@
                     <legend>What was the police response?</legend>
                     <div class="form-label">
                         <input type="radio" name="policeResponse" id="dismissed" value="none"
-                        <% if (report.policeResponse == "none") { %>
-                            checked
-                        <% } %>
+                            <% if (report.policeResponse == "none") { %>
+                                checked
+                            <% } %>
                         >
                         <label for="dismissed">None/Dismissed</label>
                     </div>
                     <div class="form-label">
                         <input type="radio" name="policeResponse" id="stationreport" value="stationreport"
-                        <% if (report.policeResponse == "stationreport") { %>
-                            checked
-                        <% } %>
+                            <% if (report.policeResponse == "stationreport") { %>
+                                checked
+                            <% } %>
                         >
                         <label for="stationreport">Report at Station</label>
                     </div>
                     <div class="form-label">
                         <input type="radio" name="policeResponse" id="sitereport" value="sitereport"
-                        <% if (report.policeResponse == "sitereport") { %>
-                            checked
-                        <% } %>
+                            <% if (report.policeResponse == "sitereport") { %>
+                                checked
+                            <% } %>
                         >
                         <label for="sitereport">Report at Crash Site</label>
                     </div>
                     <div class="form-label">
                         <input type="radio" name="policeResponse" id="arrest" value="arrest"
-                        <% if (report.policeResponse == "arrest") { %>
-                            checked
-                        <% } %>
+                            <% if (report.policeResponse == "arrest") { %>
+                                checked
+                            <% } %>
                         >
                         <label for="arrest">Arrest was made</label>
                     </div>
                 </fieldset>
                 <div class="form-label">
                     <input type="checkbox" name="madeReport" id="madeReport"
-                    <% if (report.madeReport) { %>
-                        checked
-                    <% } %>
+                        <% if (report.madeReport) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="madeReport">Was a report made?</label>
                 </div>
@@ -189,9 +189,9 @@
                 <legend>Lawsuit Info</legend>
                 <div class="form-label">
                     <input type="checkbox" name="haveLawyer" id="haveLawyer"
-                    <% if (report.haveLawyer) { %>
-                        checked
-                    <% } %>
+                        <% if (report.haveLawyer) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="haveLawyer">Have you retained a lawyer?</label>
                 </div>
@@ -199,9 +199,9 @@
                 <input type="text" name="lawyerName" id="lawyerName" value="<%= report.lawyerName %>">
                 <div class="form-label">
                     <input type="checkbox" name="madeSuit" id="madeSuit"
-                    <% if (report.madeSuit) { %>
-                        checked
-                    <% } %>
+                        <% if (report.madeSuit) { %>
+                            checked
+                        <% } %>
                     >
                     <label for="madeSuit">Have you made a lawsuit?</label>
                 </div>

@@ -20,6 +20,10 @@ a:hover {
     border: 1px solid white;
 }
 
+header h1 {
+    text-align: center;
+}
+
 header p {
     text-align: justify;
     border: 1px solid gray;
@@ -43,6 +47,10 @@ nav a {
     border: 1px solid lightgrey;
     margin: 0;
     padding: 2px 10px;
+}
+
+h3 {
+    text-align: center;
 }
 
 form {
@@ -90,6 +98,12 @@ button:hover, input[type="submit"]:hover {
     justify-content: center;
 }
 
+.buttons form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 .buttons a {
     margin: 0;
     padding: 0;
@@ -97,6 +111,13 @@ button:hover, input[type="submit"]:hover {
 
 .buttons a:hover {
     border: 0;
+}
+
+.report {
+    width: 90%;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid lightgrey;
 }
 
 .form-label {
