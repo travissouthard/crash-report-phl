@@ -3,7 +3,7 @@
         <%- include("./partials/header.ejs") %>
         <%- include("./partials/nav.ejs") %>
         <main>
-            <form action="/location" method="GET" id="locationForm">
+            <form action="/location" method="GET" id="locationForm" class="hidden">
                 <fieldset>
                     <legend>Enter Location</legend>
                     <input type="text" id="locationName" name="locationAPI" placeholder="Address or intersection">
@@ -16,8 +16,8 @@
                     <label for="date">Date of Crash</label>
                     <input type="date" name="date" id="date" required="true">
                     <label for="location">Location of Crash</label>
-                    <input type="text" name="location" id="location" required="true">
-                    <input type="text" name="latLong" id="latLong" required="true">
+                    <input type="text" name="location" id="location" required="true" placeholder="Address or intersection">
+                    <input type="text" name="latLong" id="latLong" class="hidden">
                     <div class="form-label">
                         <input type="checkbox" name="hitAndRun" id="hitAndRun">
                         <label for="hitAndRun">Was this a hit & run?</label>
@@ -77,7 +77,7 @@
                         <input type="checkbox" name="called911" id="called911"><label for="called911">Did anyone call 911?</label>
                     </div>
                     <!-- Radio buttons for police response -->
-                    <fieldset>
+                    <fieldset id="policeResponse" class="hidden">
                         <legend>What was the police response?</legend>
                         <div class="form-label">
                             <input type="radio" name="policeResponse" id="dismissed" value="none"><label for="dismissed">None/Dismissed</label>
@@ -95,17 +95,23 @@
                     <div class="form-label">
                         <input type="checkbox" name="madeReport" id="madeReport"><label for="madeReport">Was a report made?</label>
                     </div>
-                    <label for="reportNumber">If yes, what is the report number?</label><input type="text" name="reportNumber" id="reportNumber" placeholder="Police report number">
+                    <div id="policeReport" class="hidden">
+                        <label for="reportNumber">If yes, what is the report number?</label>
+                        <input type="text" name="reportNumber" id="reportNumber" placeholder="Police report number">
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Lawsuit Info</legend>
                     <div class="form-label">
                         <input type="checkbox" name="haveLawyer" id="haveLawyer"><label for="haveLawyer">Have you retained a lawyer?</label>
                     </div>
-                    <label for="lawyerName">If yes, which lawyer?</label>
-                    <input type="text" name="lawyerName" id="lawyerName" placeholder="Lawyer, Lawyer, & Lawyer">
-                    <div class="form-label">
-                        <input type="checkbox" name="madeSuit" id="madeSuit"><label for="madeSuit">Have you made a lawsuit?</label>
+                    <div id="lawyerInfo" class="hidden">
+                        <label for="lawyerName">If yes, which lawyer?</label>
+                        <input type="text" name="lawyerName" id="lawyerName" placeholder="Lawyer, Lawyer, & Lawyer">
+                        <div class="form-label">
+                            <input type="checkbox" name="madeSuit" id="madeSuit">
+                            <label for="madeSuit">Have you made a lawsuit?</label>
+                    </div>
                     </div>
                 </fieldset>
                 <div class="buttons">

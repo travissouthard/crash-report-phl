@@ -24,7 +24,6 @@ const getCoords = async (locInput) => {
     })
 }
 
-
 console.log(getCoords("20th%20and%20Snyder"));
 
 //=============
@@ -52,8 +51,8 @@ const convertData = (data) => {
     // Convert madeSuit to true
     data.madeSuit = convertBoolean(data.madeSuit);
 
-    //Splits the lat and long into an array for mapping
-    data.latLong = data.latLong.split(",");
+    // //Splits the lat and long into an array for mapping
+    // data.latLong = data.latLong.split(",");
 
     // If description is empty, convert to "Undisclosed"
     if (data.description == "") {
