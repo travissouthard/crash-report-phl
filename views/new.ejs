@@ -3,30 +3,23 @@
         <%- include("./partials/header.ejs") %>
         <%- include("./partials/nav.ejs") %>
         <main>
-            <form action="/location" method="GET" id="locationForm" class="hidden">
-                <fieldset>
-                    <legend>Enter Location</legend>
-                    <input type="text" id="locationName" name="locationAPI" placeholder="Address or intersection">
-                    <input type="submit" value="Get location">
-                </fieldset>
-            </form>
             <form action="/crashreports/" method="POST" id="reportForm">
                 <fieldset>
                     <legend>Basics</legend>
                     <label for="date">Date of Crash</label>
-                    <input type="date" name="date" id="date" required="true">
-                    <label for="location">Location of Crash</label>
-                    <input type="text" name="location" id="location" required="true" placeholder="Address or intersection">
-                    <input type="text" name="latLong" id="latLong" class="hidden">
+                    <input type="date" name="date" id="date" required="true"><br><br>
                     <div class="form-label">
                         <input type="checkbox" name="hitAndRun" id="hitAndRun">
                         <label for="hitAndRun">Was this a hit & run?</label>
-                    </div>
+                    </div><br>
                     <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10" placeholder="Please consider the following: Who was involved? Did anyone help?"></textarea>
                 </fieldset>
                 <!-- Radio Buttons for Location Type -->
                 <fieldset>
                     <legend>Where did the crash happen?</legend>
+                    <label for="location">Location of Crash</label>
+                    <input type="text" name="location" id="location" required="true" placeholder="Address or intersection"><br><br>
+                    <label>Which part of the street did it happen?</label>
                     <div class="form-label">
                         <input type="radio" name="loctype" id="intersection" value="intersection" required="true"><label for="intersection">Intersection</label>
                     </div>
@@ -96,7 +89,7 @@
                         <input type="checkbox" name="madeReport" id="madeReport"><label for="madeReport">Was a report made?</label>
                     </div>
                     <div id="policeReport" class="hidden">
-                        <label for="reportNumber">If yes, what is the report number?</label>
+                        <br><label for="reportNumber">If yes, what is the report number?</label>
                         <input type="text" name="reportNumber" id="reportNumber" placeholder="Police report number">
                     </div>
                 </fieldset>
@@ -106,8 +99,8 @@
                         <input type="checkbox" name="haveLawyer" id="haveLawyer"><label for="haveLawyer">Have you retained a lawyer?</label>
                     </div>
                     <div id="lawyerInfo" class="hidden">
-                        <label for="lawyerName">If yes, which lawyer?</label>
-                        <input type="text" name="lawyerName" id="lawyerName" placeholder="Lawyer, Lawyer, & Lawyer">
+                        <br><label for="lawyerName">If yes, which lawyer?</label>
+                        <input type="text" name="lawyerName" id="lawyerName" placeholder="Lawyer, Lawyer, & Lawyer"><br><br>
                         <div class="form-label">
                             <input type="checkbox" name="madeSuit" id="madeSuit">
                             <label for="madeSuit">Have you made a lawsuit?</label>

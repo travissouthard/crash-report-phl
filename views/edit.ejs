@@ -7,22 +7,24 @@
             <fieldset>
                 <legend>Basics</legend>
                 <label for="date">Date of Crash</label>
-                <input type="date" name="date" id="date" required="true" value="<%= report.date %>">
-                <label for="location">Location of Crash</label>
-                <input type="text" name="location" id="location" placeholder="Address or intersection" required="true" value="<%= report.location %>">
+                <input type="date" name="date" id="date" required="true" value="<%= report.date %>"><br><br>
                 <div class="form-label">
                     <input type="checkbox" name="hitAndRun"
                         <% if (report.hitAndRun) { %>
                             checked
                         <% } %>
                     >
-                    <label for="hitAndRun">Was this a hit & run?</label>
+                    <label for="hitAndRun">Was this a hit & run?</label><br><br>
                 </div>
                 <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"><%= report.description %></textarea>
             </fieldset>
             <!-- Radio buttons for location -->
             <fieldset>
                 <legend>Where did the crash happen?</legend>
+                <label for="location">Location of Crash</label>
+                <input type="text" name="location" id="location" required="true" value="<%= report.location %>">
+                <br><br>
+                <label>Which part of the street did it happen?</label>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
                         <% if (report.loctype == "intersection") { %>
@@ -140,7 +142,11 @@
                     <label for="called911">Did anyone call 911?</label>
                 </div>
                 <!-- Radio buttons for police response -->
-                <fieldset>
+                <fieldset id="policeResponse"
+                    <% if (!report.called911) { %>
+                        class="hidden"
+                    <% } %>
+                >
                     <legend>What was the police response?</legend>
                     <div class="form-label">
                         <input type="radio" name="policeResponse" id="dismissed" value="none"
@@ -183,7 +189,14 @@
                     >
                     <label for="madeReport">Was a report made?</label>
                 </div>
-                <label for="reportNumber">If yes, what is the report number?</label><input type="text" name="reportNumber" id="reportNumber" value="<%= report.reportNumber %>">
+                <div id="policeReport"
+                    <% if (!report.madeReport) { %>
+                        class="hidden"
+                    <% } %>
+                >
+                    <br><label for="reportNumber">If yes, what is the report number?</label>
+                    <input type="text" name="reportNumber" id="reportNumber" value="<%= report.reportNumber %>">
+                </div>
             </fieldset>
             <fieldset>
                 <legend>Lawsuit Info</legend>
@@ -195,15 +208,21 @@
                     >
                     <label for="haveLawyer">Have you retained a lawyer?</label>
                 </div>
-                <label for="lawyerName">If yes, which lawyer?</label>
-                <input type="text" name="lawyerName" id="lawyerName" value="<%= report.lawyerName %>">
-                <div class="form-label">
-                    <input type="checkbox" name="madeSuit" id="madeSuit"
-                        <% if (report.madeSuit) { %>
-                            checked
-                        <% } %>
-                    >
-                    <label for="madeSuit">Have you made a lawsuit?</label>
+                <div id="lawyerInfo"
+                    <% if (!report.haveLawyer) { %>
+                        class="hidden"
+                    <% } %>
+                >
+                    <br><label for="lawyerName">If yes, which lawyer?</label>
+                    <input type="text" name="lawyerName" id="lawyerName" value="<%= report.lawyerName %>"><br><br>
+                    <div class="form-label">
+                        <input type="checkbox" name="madeSuit" id="madeSuit"
+                            <% if (report.madeSuit) { %>
+                                checked
+                            <% } %>
+                        >
+                        <label for="madeSuit">Have you made a lawsuit?</label>
+                    </div>
                 </div>
             </fieldset>
             <div class="buttons">
