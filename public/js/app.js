@@ -5,7 +5,7 @@
 const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
 const addressQuery = "&address="
 const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
-const apiKey = process.env.APIKEY;
+const apiKey = "&key=" + process.env.APIKEY;
 let coords = "Not working";
 
 // Calls Google geocode API and returns coordinates for a given address or intersection
