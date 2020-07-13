@@ -1,7 +1,14 @@
+//=============
+// Dependencies
+//=============
 const express = require("express");
 const router = express.Router();
 const Reports = require("../models/crashreports.js");
 const e = require("express");
+
+//=============
+// Data Handler
+//=============
 
 // Callback for converting form data to useable data
 const convertData = (data) => {
