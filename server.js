@@ -7,6 +7,7 @@ const mongoose = require ("mongoose");
 const app = express();
 const db = mongoose.connection;
 const reportsController = require("./controllers/crashreports.js");
+require('dotenv').config();
 
 //___________________
 //Port

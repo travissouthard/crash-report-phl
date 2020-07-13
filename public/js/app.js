@@ -1,5 +1,3 @@
-// const { base } = require("../../models/crashreports");
-
 //=============
 // Geocode API
 //=============
@@ -7,7 +5,7 @@
 const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
 const addressQuery = "&address="
 const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
-const apiKey = "&key=AIzaSyB3glUz1bV7g_FWGfa4sxyrprdvKGd3G9A";
+const apiKey = process.env.APIKEY;
 let coords = "Not working";
 
 // Calls Google geocode API and returns coordinates for a given address or intersection
