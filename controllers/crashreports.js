@@ -4,7 +4,6 @@
 const express = require("express");
 const router = express.Router();
 const Reports = require("../models/crashreports.js");
-const e = require("express");
 
 //=============
 // Data Handler
@@ -30,6 +29,9 @@ const convertData = (data) => {
     data.haveLawyer = convertBoolean(data.haveLawyer);
     // Convert madeSuit to true
     data.madeSuit = convertBoolean(data.madeSuit);
+
+    //Splits the lat and long into an array for mapping
+    data.latLong = data.latLong.split(",");
 
     // If description is empty, convert to "Undisclosed"
     if (data.description == "") {
@@ -94,7 +96,6 @@ router.post("/", (req, res) => {
     
     //Convert data with callback
     req.body = convertData(req.body);
-    console.log(req.body);
     Reports.create(req.body, () => {
         res.redirect("/crashreports");
     });
