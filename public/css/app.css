@@ -127,3 +127,7 @@ button:hover, input[type="submit"]:hover {
 .form-label input, label {
     width: auto;
 }
+
+#reportForm {
+    display: none;
+}
