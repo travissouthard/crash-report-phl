@@ -3,7 +3,7 @@
         <%- include("./partials/header.ejs") %>
         <%- include("./partials/nav.ejs") %>
         <main>
-            <form id="locationForm">
+            <form action="/location" method="GET" id="locationForm">
                 <fieldset>
                     <legend>Enter Location</legend>
                     <input type="text" id="locationName" name="locationAPI" placeholder="Address or intersection">

@@ -128,6 +128,6 @@ button:hover, input[type="submit"]:hover {
     width: auto;
 }
 
-#reportForm {
+#locationForm, #latLong {
     display: none;
 }

@@ -4,6 +4,28 @@
 const express = require("express");
 const router = express.Router();
 const Reports = require("../models/crashreports.js");
+const axios = require("axios");
+require('dotenv').config();
+
+//=============
+// Geocode API
+//=============
+const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+const addressQuery = "&address="
+const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
+const apiKey = "&key=" + process.env.APIKEY;
+let coords = null;
+
+// Calls Google geocode API and returns coordinates for a given address or intersection
+const getCoords = async (locInput) => {
+    return await axios({
+        url: baseURL + addressQuery + locInput + phillyQuery + apiKey,
+        method: "get"
+    })
+}
+
+
+console.log(getCoords("20th%20and%20Snyder"));
 
 //=============
 // Data Handler

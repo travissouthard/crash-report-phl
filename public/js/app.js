@@ -1,29 +1,26 @@
-//=============
-// Geocode API
-//=============
-// const express = require("express");
-// require('dotenv').config();
+// //=============
+// // Geocode API
+// //=============
+// const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+// const addressQuery = "&address="
+// const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
+// const apiKey = "&key=" + process.env.APIKEY;
+// let coords = "";
 
-const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
-const addressQuery = "&address="
-const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
-const apiKey = "&key=" + process.env.APIKEY;
-let coords = "Not working";
-
-// Calls Google geocode API and returns coordinates for a given address or intersection
-const getLocation = (locInput) => {
-    $.ajax({
-        url: baseURL + addressQuery + locInput + phillyQuery + apiKey,
-    }).then((locData) => {
-        coords = locData.results[0].geometry.location;
-        let coordsArray = [];
-        coordsArray.push(coords.lat);
-        coordsArray.push(coords.lng);
-        $("#latLong").attr("value", coordsArray);
-    }, (error) => {
-        console.log(error);
-    });
-};
+// // Calls Google geocode API and returns coordinates for a given address or intersection
+// const getLocation = (locInput) => {
+//     $.ajax({
+//         url: baseURL + addressQuery + locInput + phillyQuery + apiKey,
+//     }).then((locData) => {
+//         coords = locData.results[0].geometry.location;
+//         let coordsArray = [];
+//         coordsArray.push(coords.lat);
+//         coordsArray.push(coords.lng);
+//         $("#latLong").attr("value", coordsArray);
+//     }, (error) => {
+//         console.log(error);
+//     });
+// };
 
 $(() => {
     // URL escapes the location input to replace spaces with "%20"
@@ -40,7 +37,7 @@ $(() => {
         //Prepares address' format for API call
         let address = $("#locationName").val();
         let preparedAddress = prepareAddress(address);
-        getLocation(preparedAddress);
+        // getLocation(preparedAddress);
 
         //Adds address to the report form
         $("#location").attr("value", address);
