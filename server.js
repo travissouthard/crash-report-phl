@@ -53,6 +53,11 @@ app.get("/", (req, res) => {
     res.redirect("/crashreports");
 })
 
+//Resources page
+app.get("/resources", (req, res) => {
+    res.render("resources.ejs");
+})
+
 //___________________
 //Listener
 //___________________

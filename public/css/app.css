@@ -119,6 +119,12 @@ button:hover, input[type="submit"]:hover {
     background-color: var(--light-blue);
 }
 
+.block {
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    padding: 2%;
+}
+
 .buttons {
     display: flex;
     flex-direction: row;
@@ -177,7 +183,7 @@ button:hover, input[type="submit"]:hover {
     }
 }
 
-@media (min-width: 579px) {
+@media (min-width: 757px) {
     nav li {
         display: inline;
     }
