@@ -56,6 +56,15 @@ h3 {
     text-align: center;
 }
 
+main ul {
+    width: 40%;
+    min-width: 300px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    list-style: none;
+}
+
 form {
     border: 1px solid var(--light-blue);
     border-radius: 5px;
