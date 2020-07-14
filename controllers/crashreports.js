@@ -8,23 +8,16 @@ const axios = require("axios");
 require('dotenv').config();
 
 //=============
-// Geocode API
+// Date Writer
 //=============
-const baseURL = "https://maps.googleapis.com/maps/api/geocode/json?";
-const addressQuery = "&address="
-const phillyQuery = ",%20Philadelphia,%20PA,%20USA"
-const apiKey = "&key=" + process.env.APIKEY;
-let coords = null;
 
-// Calls Google geocode API and returns coordinates for a given address or intersection
-const getCoords = async (locInput) => {
-    return await axios({
-        url: baseURL + addressQuery + locInput + phillyQuery + apiKey,
-        method: "get"
-    })
-}
+const writeDateBetter = (date) => {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let dateArray = date.split("-");
 
-console.log(getCoords("20th%20and%20Snyder"));
+    let readableDate = months[Number(dateArray[1]) - 1] + " " + dateArray[2] + ", " + dateArray[0];
+    return readableDate;
+};
 
 //=============
 // Data Handler
@@ -127,6 +120,7 @@ router.get("/:id", (req, res) => {
     Reports.findById(req.params.id, (err, report) => {
         res.render("show.ejs", {
             report: report,
+            writeDateBetter: writeDateBetter,
         });
     });
 });

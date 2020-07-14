@@ -6,11 +6,11 @@
         <div class="report">
             <h3>Crash Report in Detail</h3>
             <p>
-                On <%= report.date %>, a crash occurred  
+                On <%= writeDateBetter(report.date) %>, a crash occurred  
                 <% if (report.loctype == "other") { %>
-                    at <%= report.location %>
+                    at <%= report.location %>.
                 <% } else if (report.loctype == "midblock") { %>
-                    <%= report.loctype %> near <%= report.location %>
+                    <%= report.loctype %> near <%= report.location %>.
                 <% } else { %>
                     in the <%= report.loctype %> of <%= report.location %>.
                 <% } %>
@@ -62,7 +62,7 @@
                 <% } %>
                 been filed.
             </p>
-            <p class="description">Civilian report description: <%= report.description %></p>
+            <p>Civilian report description: <%= report.description %></p>
             <p>Transit modes involved: <%= report.mode %></p>
             <p>Report last updated on <%= report.updatedAt.toDateString() %>.</p>
 
