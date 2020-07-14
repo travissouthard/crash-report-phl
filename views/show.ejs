@@ -5,26 +5,67 @@
     <main>
         <div class="report">
             <h3>Crash Report in Detail</h3>
-            <p><strong>Date:</strong> <%= report.date %></p>
-            <p><strong>location:</strong> <%= report.location %></p>
-            <p><strong>description:</strong> <%= report.description %></p>
-            <p><strong>loctype:</strong> <%= report.loctype %></p>
-            <p><strong>hitAndRun:</strong> <%= report.hitAndRun %></p>
-            <p><strong>Modes involved:</strong> <%= report.mode %></p>
-            <p><strong>injury:</strong> <%= report.injury %></p>
-            <p><strong>called911:</strong> <%= report.called911 %></p>
-            <% if (report.called911) { %>
-                <p><strong>policeResponse:</strong> <%= report.policeResponse %></p>
-            <% } %>
-            <p><strong>madeReport:</strong> <%= report.madeReport %></p>
-            <% if (report.madeReport) { %>
-                <p><strong>reportNumber:</strong> <%= report.reportNumber %></p>
-            <% } %>
-            <p><strong>haveLawyer:</strong> <%= report.haveLawyer %></p>
-            <% if (report.haveLawyer) { %>
-                <p><strong>lawyerName:</strong> <%= report.lawyerName %></p>
-            <% } %>
-            <p><strong>madeSuit:</strong> <%= report.madeSuit %></p>
+            <p>
+                On <%= report.date %>, a crash occurred  
+                <% if (report.loctype == "other") { %>
+                    at <%= report.location %>
+                <% } else if (report.loctype == "midblock") { %>
+                    <%= report.loctype %> near <%= report.location %>
+                <% } else { %>
+                    in the <%= report.loctype %> of <%= report.location %>.
+                <% } %>
+
+                <% if (report.injury == "none") { %>
+                    No one was hurt.
+                <% } else if (report.injury == "death") { %>
+                    Someone was killed in this crash.
+                <% } else { %>
+                    At least one person reported a <%= report.injury %> injury.
+                <% } %></p>
+
+                <p>At the scene 
+                <% if (report.called911) { %>
+                    someone
+                <% } else { %>
+                    no one
+                <% } %>
+                called 911.
+                
+                The police 
+                <% if (report.policeResponse == "none") { %>
+                    did not report to the scene.
+                <% } else if (report.policeResponse == "stationreport") { %>
+                    asked those involved to exchange information and make a report at the station.
+                <% } else if (report.policeResponse == "sitereport") { %>
+                    took down a report at the scene and made no arrests.
+                <% } else { %>
+                    arrested at least one person involved.
+                <% } %>
+
+                A police report was 
+                <% if (!report.madeReport) { %>
+                    not made.
+                <% } else { %>
+                    made and the report number is <%= report.reportNumber %>.
+                <% } %>
+
+                As of the most recent update,
+                <% if (!report.haveLawyer) { %>
+                    a lawyer has not been hired.
+                <% } else { %>
+                    the victim has retained the services of <%= report.lawyerName %>.
+                <% } %>
+                
+                A lawsuit has
+                <% if (!report.madeSuit) { %>
+                    not 
+                <% } %>
+                been filed.
+            </p>
+            <p class="description">Civilian report description: <%= report.description %></p>
+            <p>Transit modes involved: <%= report.mode %></p>
+            <p>Report last updated on <%= report.updatedAt.toDateString() %>.</p>
+
             <div class="buttons">
                 <a href="/crashreports/<%= report.id %>/edit"><button>Edit Report</button></a>
                 <form action="/crashreports/<%= report.id %>?_method=DELETE" method="POST" id="delete-btn">

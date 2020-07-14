@@ -24,6 +24,10 @@ a:hover {
     border: 1px solid white;
 }
 
+p {
+    text-align: justify;
+}
+
 header h1 {
     text-align: center;
 }
@@ -54,6 +58,7 @@ nav a {
 
 h3 {
     text-align: center;
+    margin: 0 0 50px 0;
 }
 
 main ul {
@@ -63,6 +68,10 @@ main ul {
     padding: 0;
     text-align: center;
     list-style: none;
+}
+
+main li {
+    margin: 10px 0;
 }
 
 form {
@@ -131,11 +140,10 @@ button:hover, input[type="submit"]:hover {
     border: 0;
 }
 
-.report {
-    width: 90%;
-    margin: 10px auto;
-    padding: 10px;
+.description {
     border: 1px solid var(--light-blue);
+    padding: 10px;
+    width: 95.5%;
 }
 
 .form-label {
@@ -148,6 +156,13 @@ button:hover, input[type="submit"]:hover {
 
 .hidden {
     display: none;
+}
+
+.report {
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid var(--light-blue);
 }
 
 #policeResponse {
