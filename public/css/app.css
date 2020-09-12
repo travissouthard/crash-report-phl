@@ -160,9 +160,9 @@ button:hover, input[type="submit"]:hover {
     width: auto;
 }
 
-/* .hidden {
+.hidden {
     display: none;
-} */
+}
 
 .report {
     width: 90%;
