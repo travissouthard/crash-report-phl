@@ -3,7 +3,7 @@
 ### by Travis Southard
 
 #### See the app!
-* [Use the checklist](https://crashreportphl.herokuapp.com/)
+* [Use this app!](https://crashreportphl.herokuapp.com/)
 
 #### Premise
 In Philadelphia, when a crash happens, the people involved call 911 and unless a tow truck or an ambulance is needed, Philadelphia Police (PPD) will not come out to the crash site. Effectively, the only problem with this is that insurance companies often require a police report in order to pay out to cover expenses.
