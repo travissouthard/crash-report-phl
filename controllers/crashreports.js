@@ -92,9 +92,13 @@ const convertData = (data) => {
 //Index
 router.get("/", (req, res) => {
     Reports.find({}, (err, allReports) => {
-        res.render("index.ejs", {
-            reports: allReports,
-        });
+        if (err) {
+            res.send(err)
+        } else {
+            res.render("index.ejs", {
+                reports: allReports,
+            });
+        }
     });
 });
 
