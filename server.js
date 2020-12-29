@@ -25,8 +25,8 @@ mongoose.connect(MONGODB_URI,  {useNewUrlParser: true, useUnifiedTopology: true,
 
 // Error / success
 db.on('error', (err) => console.log(err.message + ' is Mongosh not running?'));
-db.on('connected', () => console.log('mongo connected to database'));
-db.on('disconnected', () => console.log('mongo disconnected'));
+db.on('connected', () => console.warn('mongo connected to database'));
+db.on('disconnected', () => console.error('mongo disconnected'));
 
 // open the connection to mongo
 db.on('open' , ()=>{});
