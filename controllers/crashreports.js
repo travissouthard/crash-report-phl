@@ -121,7 +121,7 @@ router.get("/", (req, res) => {
 
 //New
 router.get("/new", (req, res) => {
-    res.render("edit.ejs", {
+    res.render("report.ejs", {
         report: blankReport,
         action: "New"
     });
@@ -152,7 +152,7 @@ router.get("/:id", (req, res) => {
 //Edit
 router.get("/:id/edit", (req, res) => {
     Reports.findById(req.params.id, (err, report) => {
-        res.render("edit.ejs", {
+        res.render("report.ejs", {
             report: report,
             action: "Edit"
         });
