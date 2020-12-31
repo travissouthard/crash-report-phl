@@ -1,4 +1,5 @@
 $(() => {
+    // Report form UI enhancements
     $("#called911").on("change", () => {
         $("#policeResponse").toggleClass("hidden");
     });
@@ -22,4 +23,12 @@ $(() => {
     let marker = new mapboxgl.Marker({
         draggable: true
     }).setLngLat([-75.2032832, 39.9631334]).addTo(map);
+
+    // $(".mapboxgl-marker").on("dragend", () => {
+    //     console.log("You dragged me!")
+    // });
+
+    marker.on("dragend", () => {
+        console.log(marker.getLngLat())
+    })
 });
