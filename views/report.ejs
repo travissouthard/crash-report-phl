@@ -3,6 +3,7 @@
     <%- include("./partials/header.ejs") %>
     <%- include("./partials/nav.ejs") %>
     <main>
+        <div id='map' style='width: 100%; height: 300px;'></div>
         <form action="/crashreports/<%= report.id %><%= report.id != '' ? '?_method=PUT' : '' %>" method="POST">
             <fieldset>
                 <legend>Basics</legend>
@@ -18,11 +19,13 @@
                 </div>
                 <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"><%= report.description %></textarea>
             </fieldset>
-            <!-- Radio buttons for location -->
             <fieldset>
                 <legend>Where did the crash happen?</legend>
                 <label for="location">Location of Crash</label>
                 <input type="text" name="location" id="location" required="true" value="<%= report.location %>">
+                <br><br>
+                <label for="lngLat">Map Coordinates (drag marker on map to set)</label>
+                <input type="text" name="lngLat" id="lngLat" required="true" value="<%= report.lngLat %>" disabled>
                 <br><br>
                 <label>Which part of the street did it happen?</label>
                 <div class="form-label">
