@@ -139,8 +139,12 @@ router.post("/", (req, res) => {
 
     //Convert data with callback
     req.body = convertData(req.body);
-    Reports.create(req.body, () => {
-        res.redirect("/resources");
+    Reports.create(req.body, (err, report) => {
+        if (err) {
+            console.error(err)
+        } else {
+            res.redirect("/resources");
+        }
     });
 });
 

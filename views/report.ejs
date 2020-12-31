@@ -24,9 +24,8 @@
                 <label for="location">Location of Crash</label>
                 <input type="text" name="location" id="location" required="true" value="<%= report.location %>">
                 <br><br>
-                <label for="lngLat">Map Coordinates (drag marker on map to set)</label>
-                <input type="text" name="lngLat" id="lngLat" required="true" value="<%= report.lngLat %>" disabled>
-                <br><br>
+                <label for="lngLat">Map Coordinates (Drag marker to location of crash to set)</label>
+                <input type="text" name="lngLat" id="lngLat" required="true" value="<%= report.lngLat %>"><br><br>
                 <label>Which part of the street did it happen?</label>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
