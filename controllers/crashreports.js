@@ -12,6 +12,7 @@ require('dotenv').config();
 //=============
 
 const blankReport = {
+    id: "",
     date: "",
     location: "",
     hitAndRun: false,
