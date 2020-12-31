@@ -28,6 +28,8 @@ const blankReport = {
     madeSuit: false
 };
 
+const mapboxKey = process.env.MAPBOXAPIKEY || "pk.eyJ1IjoidHJhdmlzc291dGhhcmQiLCJhIjoiY2tiaTNkODI5MGJhdjJ5bTh1ZGtzazdlNSJ9.a7G1oI8IkOxDuH8kBnEfcA"
+
 const writeDateBetter = (date) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let dateArray = date.split("-");
@@ -114,6 +116,7 @@ router.get("/", (req, res) => {
         } else {
             res.render("index.ejs", {
                 reports: allReports,
+                mapboxKey: mapboxKey,
             });
         }
     });

@@ -4,11 +4,21 @@
         <%- include("./partials/nav.ejs") %>
         <main>
             <h3>Crash Reports</h3>
+            <div id='map' style='width: 400px; height: 300px;'></div>
             <ul>
                 <% for (let i = 0; i < reports.length; i++) { %>
                     <li><a href="/crashreports/<%= reports[i].id %>"><%= reports[i].date %></a> | <%= reports[i].location %></li>
                 <% } %>
             </ul>
         </main>
+        <script>
+            mapboxgl.accessToken = "pk.eyJ1IjoidHJhdmlzc291dGhhcmQiLCJhIjoiY2tiaTNkODI5MGJhdjJ5bTh1ZGtzazdlNSJ9.a7G1oI8IkOxDuH8kBnEfcA";
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+            center: [-74.5, 40], // starting position [lng, lat]
+            zoom: 9 // starting zoom
+            });
+        </script>
     </body>
 </html>
