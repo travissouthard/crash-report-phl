@@ -8,8 +8,25 @@ const axios = require("axios");
 require('dotenv').config();
 
 //=============
-// Date Writer
+// Bonus Data
 //=============
+
+const blankReport = {
+    date: "",
+    location: "",
+    hitAndRun: false,
+    description: "",
+    loctype: "",
+    mode: [],
+    injury: "",
+    called911: false,
+    policeResponse: "",
+    madeReport: false,
+    reportNumber: "",
+    haveLawyer: false,
+    lawyerName: "",
+    madeSuit: false
+};
 
 const writeDateBetter = (date) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -104,7 +121,10 @@ router.get("/", (req, res) => {
 
 //New
 router.get("/new", (req, res) => {
-    res.render("new.ejs");
+    res.render("edit.ejs", {
+        report: blankReport,
+        action: "New"
+    });
 });
 
 //Create
@@ -134,6 +154,7 @@ router.get("/:id/edit", (req, res) => {
     Reports.findById(req.params.id, (err, report) => {
         res.render("edit.ejs", {
             report: report,
+            action: "Edit"
         });
     });
 });
