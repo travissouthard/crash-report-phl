@@ -8,8 +8,27 @@ const axios = require("axios");
 require('dotenv').config();
 
 //=============
-// Date Writer
+// Bonus Data
 //=============
+
+const blankReport = {
+    id: "",
+    date: "",
+    location: "",
+    lngLat: "-75.163597,39.952394",
+    hitAndRun: false,
+    description: "",
+    loctype: "",
+    mode: [],
+    injury: "",
+    called911: false,
+    policeResponse: "",
+    madeReport: false,
+    reportNumber: "",
+    haveLawyer: false,
+    lawyerName: "",
+    madeSuit: false
+};
 
 const writeDateBetter = (date) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -97,25 +116,33 @@ router.get("/", (req, res) => {
         } else {
             res.render("index.ejs", {
                 reports: allReports,
+                writeDateBetter: writeDateBetter
             });
         }
     });
 });
 
 //New
-router.get("/new" , (req, res) => {
-    res.render("new.ejs");
+router.get("/new", (req, res) => {
+    res.render("report.ejs", {
+        report: blankReport,
+        action: "New"
+    });
 });
 
 //Create
 router.post("/", (req, res) => {
     // Convert location to specific coordinates
-        // Need API for this
-    
+    // Need API for this
+
     //Convert data with callback
     req.body = convertData(req.body);
-    Reports.create(req.body, () => {
-        res.redirect("/resources");
+    Reports.create(req.body, (err, report) => {
+        if (err) {
+            console.error(err)
+        } else {
+            res.redirect("/resources");
+        }
     });
 });
 
@@ -132,8 +159,9 @@ router.get("/:id", (req, res) => {
 //Edit
 router.get("/:id/edit", (req, res) => {
     Reports.findById(req.params.id, (err, report) => {
-        res.render("edit.ejs", {
+        res.render("report.ejs", {
             report: report,
+            action: "Edit"
         });
     });
 });
@@ -143,7 +171,7 @@ router.put("/:id", (req, res) => {
     //Convert data with callback
     req.body = convertData(req.body);
 
-    Reports.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newReport) => {
+    Reports.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, newReport) => {
         if (err) {
             console.log(err);
         } else {

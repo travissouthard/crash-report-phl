@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const reportSchema = new Schema({
     date: {type: String, required: true},
     location: {type: String, required: true},
+    lngLat: {type: String, required: true},
     hitAndRun: {type: Boolean, default: false},
     description: String,
     loctype: String,

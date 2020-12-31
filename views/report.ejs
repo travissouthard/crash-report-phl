@@ -3,7 +3,8 @@
     <%- include("./partials/header.ejs") %>
     <%- include("./partials/nav.ejs") %>
     <main>
-        <form action="/crashreports/<%= report.id %>?_method=PUT" method="POST">
+        <div id='map' style='width: 100%; height: 300px;'></div>
+        <form action="/crashreports/<%= report.id %><%= report.id != '' ? '?_method=PUT' : '' %>" method="POST">
             <fieldset>
                 <legend>Basics</legend>
                 <label for="date">Date of Crash</label>
@@ -18,12 +19,13 @@
                 </div>
                 <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"><%= report.description %></textarea>
             </fieldset>
-            <!-- Radio buttons for location -->
             <fieldset>
                 <legend>Where did the crash happen?</legend>
                 <label for="location">Location of Crash</label>
                 <input type="text" name="location" id="location" required="true" value="<%= report.location %>">
                 <br><br>
+                <label for="lngLat">Map Coordinates (Drag marker to location of crash)</label>
+                <input type="text" name="lngLat" id="lngLat" required="true" value="<%= report.lngLat %>"><br><br>
                 <label>Which part of the street did it happen?</label>
                 <div class="form-label">
                     <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
@@ -226,10 +228,30 @@
                 </div>
             </fieldset>
             <div class="buttons">
-                <input type="submit" value="Edit report">
+                <input type="submit" value="<%= action %> report">
                 <a href="/crashreports/<%= report.id %>"><button>Cancel</button></a>
             </div>
         </form>
     </main>
+    <script>
+        mapboxgl.accessToken = "pk.eyJ1IjoidHJhdmlzc291dGhhcmQiLCJhIjoiY2tiaTNkODI5MGJhdjJ5bTh1ZGtzazdlNSJ9.a7G1oI8IkOxDuH8kBnEfcA";
+        let map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/travissouthard/ckjd6y5j624ll19phixshuo24', // stylesheet location
+            center: [-75.163597, 40.0], // starting position [lng, lat]
+            zoom: 9.25 // starting zoom
+        });
+
+        let coords = $("#lngLat").val().split(",")
+        let marker = new mapboxgl.Marker({
+            draggable: true
+        }).setLngLat(coords).addTo(map);
+
+        marker.on("dragend", () => {
+            let coordObj = marker.getLngLat()
+            let lngLat = [coordObj.lng, coordObj.lat].join()
+            $("#lngLat").val(lngLat)
+        })
+    </script>
 </body>
 </html>

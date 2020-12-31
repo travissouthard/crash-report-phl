@@ -4,9 +4,10 @@
         <%- include("./partials/nav.ejs") %>
         <main>
             <h3>Crash Reports</h3>
+            <!-- <div id='map' style='width: 100%; height: 300px;'></div> -->
             <ul>
                 <% for (let i = 0; i < reports.length; i++) { %>
-                    <li><a href="/crashreports/<%= reports[i].id %>"><%= reports[i].date %></a> | <%= reports[i].location %></li>
+                    <li><a href="/crashreports/<%= reports[i].id %>"><%= writeDateBetter(reports[i].date) %></a> | <%= reports[i].location %></li>
                 <% } %>
             </ul>
         </main>
