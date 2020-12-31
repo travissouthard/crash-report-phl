@@ -15,7 +15,7 @@ const blankReport = {
     id: "",
     date: "",
     location: "",
-    lngLat: "",
+    lngLat: "-75.163597,39.952394",
     hitAndRun: false,
     description: "",
     loctype: "",
