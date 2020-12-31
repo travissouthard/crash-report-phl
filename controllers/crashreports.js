@@ -118,7 +118,6 @@ router.get("/", (req, res) => {
         } else {
             res.render("index.ejs", {
                 reports: allReports,
-                mapboxKey: mapboxKey,
             });
         }
     });
