@@ -9,21 +9,16 @@
                 <tr>
                     <th>Date</th>
                     <th>Location</th>
-                    <th>Map Coordinates</th>
+                    <th>Hit and Run</th>
                 </tr>
                 <% for (let i = 0; i < reports.length; i++) { %>
                     <tr>
                         <td><a href="/crashreports/<%= reports[i].id %>"><%= writeDateBetter(reports[i].date) %></a></td>
-                        <td><%= reports[i].location %></td>
-                        <td class="lngLat" id="<%= reports[i].lngLat %>"><%= reports[i].lngLat %></td>
+                        <td class="lngLat" id="<%= reports[i].lngLat %>"><%= reports[i].location %></td>
+                        <td><%= reports[i].hitAndRun ? "Yes" : "No" %></td>
                     </tr>
                 <% } %>
             </table>
-            <!-- <ul>
-                <% for (let i = 0; i < reports.length; i++) { %>
-                    <li><a href="/crashreports/<%= reports[i].id %>"><%= writeDateBetter(reports[i].date) %></a> | <%= reports[i].location %></li>
-                <% } %>
-            </ul> -->
         </main>
     </body>
 </html>
