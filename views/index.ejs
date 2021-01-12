@@ -15,7 +15,7 @@
                     <tr>
                         <td><a href="/crashreports/<%= reports[i].id %>"><%= writeDateBetter(reports[i].date) %></a></td>
                         <td><%= reports[i].location %></td>
-                        <td class="lngLat"><%= reports[i].lngLat %></td>
+                        <td class="lngLat" id="<%= reports[i].lngLat %>"><%= reports[i].lngLat %></td>
                     </tr>
                 <% } %>
             </table>

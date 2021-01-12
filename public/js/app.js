@@ -21,7 +21,7 @@ $(() => {
         zoom: 9.25 // starting zoom
     });
 
-    let coords
+    let coords;
     
     if ($("#lngLat").val()) {
         coords = $("#lngLat").val().split(",")
@@ -29,9 +29,16 @@ $(() => {
             draggable: true
         }).setLngLat(coords).addTo(map);
         marker.on("dragend", () => {
-            let coordObj = marker.getLngLat()
-            let lngLat = [coordObj.lng, coordObj.lat].join()
+            let coordObj = marker.getLngLat();
+            let lngLat = [coordObj.lng, coordObj.lat].join();
             $("#lngLat").val(lngLat)
+        })
+    } else if ($(".lngLat").length > 0) {
+        let markers = [];
+        $(".lngLat").map(i => {
+            coords = $(".lngLat")[i].id.split(",");
+            let marker = new mapboxgl.Marker().setLngLat(coords).addTo(map);
+            markers.push(marker)
         })
     }
 });
