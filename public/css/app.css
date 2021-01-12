@@ -74,6 +74,17 @@ main li {
     margin: 10px 0;
 }
 
+table {
+    width: 100%;
+    border: 1px solid var(--light-blue);
+    border-radius: 5px;
+    text-align: center;
+}
+
+tr, th, td {
+    text-align: center;
+}
+
 form {
     border: 1px solid var(--light-blue);
     border-radius: 5px;

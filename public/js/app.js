@@ -13,5 +13,25 @@ $(() => {
     });
     
     // Mapbox Things
-    //Temporarily moved to bottom of report.js until a better way to keep json as json, probably needs to be a React frontend rather than templates
+    mapboxgl.accessToken = "pk.eyJ1IjoidHJhdmlzc291dGhhcmQiLCJhIjoiY2tiaTNkODI5MGJhdjJ5bTh1ZGtzazdlNSJ9.a7G1oI8IkOxDuH8kBnEfcA";
+    let map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/travissouthard/ckjd6y5j624ll19phixshuo24', // stylesheet location
+        center: [-75.163597, 40.0], // starting position [lng, lat]
+        zoom: 9.25 // starting zoom
+    });
+
+    let coords
+    
+    if ($("#lngLat").val()) {
+        coords = $("#lngLat").val().split(",")
+        let marker = new mapboxgl.Marker({
+            draggable: true
+        }).setLngLat(coords).addTo(map);
+        marker.on("dragend", () => {
+            let coordObj = marker.getLngLat()
+            let lngLat = [coordObj.lng, coordObj.lat].join()
+            $("#lngLat").val(lngLat)
+        })
+    }
 });
