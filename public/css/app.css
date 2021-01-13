@@ -1,10 +1,12 @@
 :root {
     --light-blue: hsl(188, 100%, 53%);
+    --dark-gray: rgb(36, 36, 36);
+    --white: rgb(220, 220, 220);
 }
 
 body {
-    background-color: black;
-    color: white;
+    background-color: var(--dark-gray);
+    color: var(--white);
     font-family: sans-serif;
     margin: 0 auto;
     padding: 0 10px;
@@ -20,8 +22,8 @@ a {
 
 a:hover {
     margin: 0;
-    color: white;
-    border: 1px solid white;
+    color: var(--white);
+    border: 1px solid var(--white);
 }
 
 p {
@@ -36,7 +38,7 @@ header p {
     text-align: justify;
     border: 1px solid gray;
     background-color: var(--light-blue);
-    color: black;
+    color: var(--dark-gray);
     padding: 3%;
 }
 
@@ -121,12 +123,12 @@ button, input[type="submit"] {
     margin: 5px 10px;
     border-radius: 3px;
     background-color: grey;
-    color: white;
+    color: var(--white);
 }
 
 button:hover, input[type="submit"]:hover {
-    border: 2px solid white;
-    color: white;
+    border: 2px solid var(--white);
+    color: var(--white);
     background-color: var(--light-blue);
 }
 
