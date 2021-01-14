@@ -83,66 +83,34 @@
             <fieldset>
                 <legend>911/Police Response</legend>
                 <div class="form-label">
-                    <input type="checkbox" name="called911" id="called911"
-                        <% if (report.called911) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="called911" id="called911" <%= (report.called911) ? "checked" : "" %>>
                     <label for="called911">Did anyone call 911?</label>
                 </div>
                 <!-- Radio buttons for police response -->
-                <fieldset id="policeResponse"
-                    <% if (!report.called911) { %>
-                        class="hidden"
-                    <% } %>
-                >
+                <fieldset id="policeResponse" class="<%= (!report.called911) ? 'hidden' : '' %>">
                     <legend>What was the police response?</legend>
                     <div class="form-label">
-                        <input type="radio" name="policeResponse" id="dismissed" value="none"
-                            <% if (report.policeResponse == "none") { %>
-                                checked
-                            <% } %>
-                        >
+                        <input type="radio" name="policeResponse" id="dismissed" value="none" <%= (report.policeResponse == "none") ? "checked" : "" %>>
                         <label for="dismissed">None/Dismissed</label>
                     </div>
                     <div class="form-label">
-                        <input type="radio" name="policeResponse" id="stationreport" value="stationreport"
-                            <% if (report.policeResponse == "stationreport") { %>
-                                checked
-                            <% } %>
-                        >
+                        <input type="radio" name="policeResponse" id="stationreport" value="stationreport" <%= (report.policeResponse == "stationreport") ? "checked" : "" %>>
                         <label for="stationreport">Report at Station</label>
                     </div>
                     <div class="form-label">
-                        <input type="radio" name="policeResponse" id="sitereport" value="sitereport"
-                            <% if (report.policeResponse == "sitereport") { %>
-                                checked
-                            <% } %>
-                        >
+                        <input type="radio" name="policeResponse" id="sitereport" value="sitereport" <%= (report.policeResponse == "sitereport") ? "checked" : "" %>>
                         <label for="sitereport">Report at Crash Site</label>
                     </div>
                     <div class="form-label">
-                        <input type="radio" name="policeResponse" id="arrest" value="arrest"
-                            <% if (report.policeResponse == "arrest") { %>
-                                checked
-                            <% } %>
-                        >
+                        <input type="radio" name="policeResponse" id="arrest" value="arrest" <%= (report.policeResponse == "arrest") ? "checked" : "" %>>
                         <label for="arrest">Arrest was made</label>
                     </div>
                 </fieldset>
                 <div class="form-label">
-                    <input type="checkbox" name="madeReport" id="madeReport"
-                        <% if (report.madeReport) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="madeReport" id="madeReport" <%= (report.madeReport) ? "checked" : "" %>>
                     <label for="madeReport">Was a report made?</label>
                 </div>
-                <div id="policeReport"
-                    <% if (!report.madeReport) { %>
-                        class="hidden"
-                    <% } %>
-                >
+                <div id="policeReport" class="<%= (!report.madeReport) ? 'hidden' : '' %>">
                     <br><label for="reportNumber">If yes, what is the report number?</label>
                     <input type="text" name="reportNumber" id="reportNumber" value="<%= report.reportNumber %>">
                 </div>
