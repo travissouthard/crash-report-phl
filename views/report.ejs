@@ -10,11 +10,7 @@
                 <label for="date">Date of Crash</label>
                 <input type="date" name="date" id="date" required="true" value="<%= report.date %>"><br><br>
                 <div class="form-label">
-                    <input type="checkbox" name="hitAndRun"
-                        <% if (report.hitAndRun) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="hitAndRun" <%= (report.hitAndRun) ? "checked" : "" %>>
                     <label for="hitAndRun">Was this a hit & run?</label><br><br>
                 </div>
                 <label for="description">Can you give a brief description of the crash?</label><textarea name="description" id="description" cols="30" rows="10"><%= report.description %></textarea>
@@ -28,72 +24,39 @@
                 <input type="text" name="lngLat" id="lngLat" required="true" value="<%= report.lngLat %>"><br><br>
                 <label>Which part of the street did it happen?</label>
                 <div class="form-label">
-                    <input type="radio" name="loctype" id="intersection" value="intersection" required="true"
-                        <% if (report.loctype == "intersection") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="loctype" id="intersection" value="intersection" required="true" <%= (report.loctype == "intersection") ? "checked" : "" %>>
                     <label for="intersection">Intersection</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="loctype" id="midblock" value="midblock" required="true"
-                        <% if (report.loctype == "midblock") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="loctype" id="midblock" value="midblock" required="true" <%= (report.loctype == "midblock") ? "checked" : "" %>>
                     <label for="midblock">Midblock</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true"
-                        <% if (report.loctype == "sidewalk") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="loctype" id="sidewalk" value="sidewalk" required="true" <%= (report.loctype == "sidewalk") ? "checked" : "" %>>
                     <label for="sidewalk">Sidewalk</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true"
-                        <% if (report.loctype == "parkinglot") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="loctype" id="parkinglot" value="parkinglot" required="true" <%= (report.loctype == "parkinglot") ? "checked" : "" %>>
                     <label for="parkinglot">Parking Lot</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="loctype" id="other" value="other" required="true"
-                        <% if (report.loctype == "other") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="loctype" id="other" value="other" required="true" <%= (report.loctype == "other") ? "checked" : "" %>>
                     <label for="other">Other</label>
                 </div>
             </fieldset>
             <!-- Checkboxes for vehicle types -->
-            <!-- Callback for .some() array method below -->
             <fieldset>
                 <legend>What travel modes were involved?</legend>
                 <div class="form-label">
-                    <input type="checkbox" name="car" id="car"
-                        <% if (report.mode.some((mode) => mode == "car")) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="car" id="car" <%= (report.mode.some((mode) => mode == "car")) ? "checked" : "" %>>
                     <label for="car">Car (includes motorcycles, trucks)</label>
                 </div>
                 <div class="form-label">
-                    <input type="checkbox" name="bike" id="bike"
-                        <% if (report.mode.some((mode) => mode == "bike")) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="bike" id="bike" <%= (report.mode.some((mode) => mode == "bike")) ? "checked" : "" %>>
                     <label for="bike">Bicycle</label>
                 </div>
                 <div class="form-label">
-                    <input type="checkbox" name="ped" id="ped"
-                        <% if (report.mode.some((mode) => mode == "ped")) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="ped" id="ped" <%= (report.mode.some((mode) => mode == "ped")) ? "checked" : "" %>>
                     <label for="ped">Pedestrian</label>
                 </div>
             </fieldset>
@@ -233,25 +196,5 @@
             </div>
         </form>
     </main>
-    <!-- <script>
-        mapboxgl.accessToken = "pk.eyJ1IjoidHJhdmlzc291dGhhcmQiLCJhIjoiY2tiaTNkODI5MGJhdjJ5bTh1ZGtzazdlNSJ9.a7G1oI8IkOxDuH8kBnEfcA";
-        let map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/travissouthard/ckjd6y5j624ll19phixshuo24', // stylesheet location
-            center: [-75.163597, 40.0], // starting position [lng, lat]
-            zoom: 9.25 // starting zoom
-        });
-
-        let coords = $("#lngLat").val().split(",")
-        let marker = new mapboxgl.Marker({
-            draggable: true
-        }).setLngLat(coords).addTo(map);
-
-        marker.on("dragend", () => {
-            let coordObj = marker.getLngLat()
-            let lngLat = [coordObj.lng, coordObj.lat].join()
-            $("#lngLat").val(lngLat)
-        })
-    </script> -->
 </body>
 </html>
