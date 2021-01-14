@@ -64,35 +64,19 @@
             <fieldset>
                 <legend>Was anyone injured?</legend>
                 <div class="form-label">
-                    <input type="radio" name="injury" id="none" value="none" required="true"
-                        <% if (report.injury == "none") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="injury" id="none" value="none" required="true" <%= (report.injury == "none") ? "checked" : "" %>>
                     <label for="none">None</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="injury" id="minor" value="minor" required="true"
-                        <% if (report.injury == "minor") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="injury" id="minor" value="minor" required="true" <%= (report.injury == "minor") ? "checked" : "" %>>
                     <label for="minor">Minor</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="injury" id="major" value="major" required="true"
-                        <% if (report.injury == "major") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="injury" id="major" value="major" required="true" <%= (report.injury == "major") ? "checked" : "" %>>
                     <label for="major">Major</label>
                 </div>
                 <div class="form-label">
-                    <input type="radio" name="injury" id="death" value="death" required="true"
-                        <% if (report.injury == "none") { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="radio" name="injury" id="death" value="death" required="true" <%= (report.injury == "death") ? "checked" : "" %>>
                     <label for="death">Death</label>
                 </div>
             </fieldset>
