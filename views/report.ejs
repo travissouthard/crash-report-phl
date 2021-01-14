@@ -118,26 +118,14 @@
             <fieldset>
                 <legend>Lawsuit Info</legend>
                 <div class="form-label">
-                    <input type="checkbox" name="haveLawyer" id="haveLawyer"
-                        <% if (report.haveLawyer) { %>
-                            checked
-                        <% } %>
-                    >
+                    <input type="checkbox" name="haveLawyer" id="haveLawyer" <%= (report.haveLawyer) ? "checked" : "" %>>
                     <label for="haveLawyer">Have you retained a lawyer?</label>
                 </div>
-                <div id="lawyerInfo"
-                    <% if (!report.haveLawyer) { %>
-                        class="hidden"
-                    <% } %>
-                >
-                    <br><label for="lawyerName">If yes, which lawyer?</label>
+                <div id="lawyerInfo" class="<%= (!report.haveLawyer) ? 'hidden' : '' %>" ><br>
+                    <label for="lawyerName">If yes, which lawyer?</label>
                     <input type="text" name="lawyerName" id="lawyerName" value="<%= report.lawyerName %>"><br><br>
                     <div class="form-label">
-                        <input type="checkbox" name="madeSuit" id="madeSuit"
-                            <% if (report.madeSuit) { %>
-                                checked
-                            <% } %>
-                        >
+                        <input type="checkbox" name="madeSuit" id="madeSuit" <%= (report.madeSuit) ? "checked" : "" %>>
                         <label for="madeSuit">Have you made a lawsuit?</label>
                     </div>
                 </div>
