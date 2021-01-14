@@ -145,7 +145,6 @@ router.get("/:id/edit", (req, res) => {
 
 //Update
 router.put("/:id", (req, res) => {
-    //Convert data with callback
     req.body = convertData(req.body);
     Reports.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, newReport) => {
         if (err) {
