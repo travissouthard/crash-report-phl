@@ -9,6 +9,7 @@ const mongoose = require ("mongoose");
 const app = express();
 const db = mongoose.connection;
 const reportsController = require("./controllers/crashreports.js");
+const usersController = require("./controllers/users.js");
 
 //___________________
 //Port
@@ -50,6 +51,7 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride("_method"));// allow POST, PUT and DELETE from a form
 app.use("/crashreports/", reportsController);
+app.use("/users/", usersController);
 
 //___________________
 //Routes
