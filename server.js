@@ -37,6 +37,11 @@ db.on('open' , ()=>{});
 //Middleware
 //___________________
 
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: false
+}));
 //use public folder for static assets
 app.use(express.static("public"));
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
@@ -45,12 +50,6 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride("_method"));// allow POST, PUT and DELETE from a form
 app.use("/crashreports/", reportsController);
-app.use(session({
-        secret: process.env.SECRET,
-        resave: false,
-        saveUninitialized: false
-    })
-)
 
 //___________________
 //Routes
