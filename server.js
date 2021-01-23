@@ -10,6 +10,7 @@ const app = express();
 const db = mongoose.connection;
 const reportsController = require("./controllers/crashreports.js");
 const usersController = require("./controllers/users.js");
+const sessionsController = require("./controllers/sessions.js");
 
 //___________________
 //Port
@@ -21,7 +22,7 @@ const PORT = process.env.PORT || 3000;
 //Database
 //___________________
 // How to connect to the database either via heroku or locally
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+ 'crashreports';
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/crashreports';
 
 // Connect to Mongo
 mongoose.connect(MONGODB_URI,  {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
@@ -52,6 +53,7 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 app.use(methodOverride("_method"));// allow POST, PUT and DELETE from a form
 app.use("/crashreports/", reportsController);
 app.use("/users/", usersController);
+app.use("/sessions/", sessionsController);
 
 //___________________
 //Routes
